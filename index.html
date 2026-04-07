@@ -28,6 +28,21 @@
             border-bottom: 1px solid #ededed;
             padding-bottom: 20px;
         }
+        
+        .header-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 0;
+            font-size: 28px;
+        }
+
+        .main-logo {
+            width: 44px; /* 조금 더 크거나 작게 하고 싶으면 이 숫자를 조절하세요 */
+            height: 44px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
 
         h1 {
             font-size: 28px;
@@ -133,35 +148,35 @@
 
     <div class="container">
         <header>
-            <h1>👾 crack 일이</h1>
+            <h1 class="header-title">
+                <img src="https://crack.wrtn.ai/favicon/favicon-96x96.png" alt="로고" class="crack">
+                crack 일이
+            </h1>
         </header>
 
         <main>
+            
             <!-- 캐릭터 1 시작 -->
             <div class="character-card">
-                <!-- 이미지 주소를 src="" 안에 넣으세요 -->
                 <img src="https://12321.uk/wrtn/3%EC%9D%BC_%EA%B9%80%EC%A0%95%EC%B2%A0L.png" alt="너와 함께 영원한 3일을" class="character-thumb">
                 
                 <div class="character-info">
-                    <h2>너와함께 영원한 3일을</h2>
+                    <h2>💫 너와함께 영원한 3일을</h2>
                     
                     <ul class="link-list">
-                        <!-- 이동할 페이지 주소를 href="" 안에 넣으세요 -->
                         <li><a href="bell_thumb.html">🖼️ 썸네일 모음</a></li>
-                        <li><a href="louis-bcut.html">✨ B컷/찐빠컷</a></li>
+                        <li><a href="bell_etc.html">👾 B컷/기타등등</a></li>
                     </ul>
                 </div>
             </div>
-            <!-- 캐릭터 1 끝 -->
 
-            <!-- 캐릭터 2 시작 (위 코드를 그대로 복사해서 반복!) -->
             <div class="character-card">
                 <img src="https://via.placeholder.com/160" alt="캐릭터2 썸네일" class="character-thumb">
                 <div class="character-info">
-                    <h2>그럼에도, 여전히</h2>
+                    <h2>🌃 그럼에도, 여전히</h2>
                     <p>만들고있어요!!</p>
                     <ul class="link-list">
-                        <li><a href="jimin-bcut.html">✨ B컷</a></li>
+                        <li><a href="nowpre.html">제작중</a></li>
                     </ul>
                 </div>
             </div>
