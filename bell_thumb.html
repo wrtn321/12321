@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-width=1.0">
+    <title>벨 썸네일 모음</title>
+    <style>
+        /* 메인 페이지와 동일한 깔끔한 기본 설정 */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #ffffff;
+            color: #37352f;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px; /* PC에서도 너무 넓게 퍼지지 않게 잡아줌 */
+            margin: 0 auto;
+            padding: 40px 20px;
+            min-height: 80vh;
+        }
+
+        /* 상단 헤더 및 뒤로가기 버튼 */
+        header {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            text-decoration: none;
+            color: #787774;
+            font-size: 14px;
+            padding: 6px 12px;
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+
+        .back-btn:hover {
+            background-color: #f7f6f3;
+            color: #37352f;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        /* 이미지 리스트 스타일 (반응형) */
+        .image-gallery {
+            display: flex;
+            flex-direction: column; /* 이미지를 세로로 나열 */
+            gap: 20px; /* 이미지 사이의 간격 */
+            align-items: center; /* 이미지를 가운데 정렬 */
+        }
+
+        .image-gallery img {
+            max-width: 100%; /* 모바일 화면을 넘지 않게 해주는 핵심 마법! */
+            height: auto;
+            border-radius: 8px; /* 모서리 살짝 둥글게 */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* 은은한 그림자 */
+        }
+
+        /* 푸터 스타일 */
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #999;
+            font-size: 12px;
+            border-top: 1px solid #ededed;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <!-- index.html로 돌아가는 버튼 -->
+            <a href="index.html" class="back-btn">⬅️ 메인으로 돌아가기</a>
+            <h1>너와 함께 영원한 3일을</h1>
+        </header>
+
+        <main class="image-gallery">
+            <!-- 아래에 이미지 태그를 계속 복사+붙여넣기 하시면 됩니다 -->
+            <!-- src="" 안에 깃허브에 올린 이미지 주소를 넣으세요 -->
+          <p>1:1 썸네일</p>
+            <img src="https://12321.uk/wrtn/%EC%8D%B8%EB%84%A4%EC%9D%BC%20(1).png" alt="썸네일 1">
+          <p>만우절 메이드 벨</p>
+            <img src="https://12321.uk/wrtn/%EC%8D%B8%EB%84%A4%EC%9D%BC%20(3).jpg" alt="썸네일 2">
+          <p>지금 썸네일</p>
+            <img src="https://12321.uk/wrtn/%EC%8D%B8%EB%84%A4%EC%9D%BC%20(2).jpg" alt="썸네일 3">
+            <img src="https://12321.uk/wrtn/3%EC%9D%BC_%EA%B9%80%EC%A0%95%EC%B2%A0L.png" alt="썸네일 3">
+        </main>
+    </div>
+
+    <footer>
+        © 2026 crack12. All rights reserved.<br>
+    </footer>
+
+</body>
+</html>
