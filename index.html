@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-width=1.0">
     <title>일이</title>
     <style>
-        /* 기본 스타일 */
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             background-color: #ffffff;
@@ -15,14 +14,14 @@
             padding: 0;
         }
 
-        /* 전체 컨텐츠를 가운데로 모아주는 역할 */
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 40px 20px;
             min-height: 80vh;
         }
 
+        /* 헤더 */
         header {
             margin-bottom: 40px;
             border-bottom: 1px solid #ededed;
@@ -40,109 +39,99 @@
         .crack {
             width: 36px;
             height: 36px;
+            border-radius: 8px;
         }
 
-        h1 {
-            font-size: 28px;
-            margin: 0;
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 32px 24px; 
         }
 
-        /* 캐릭터 카드 스타일 (PC에서는 가로, 모바일에서는 세로) */
-        .character-card {
+        .work-card {
             display: flex;
-            gap: 24px;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 12px;
-            background-color: #f7f6f3;
-            transition: transform 0.2s ease;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
         }
 
-        .character-card:hover {
-            transform: translateY(-2px); 
+        .img-wrapper {
+            width: 100%;
+            aspect-ratio: 2 / 3; 
+            border-radius: 12px;
+            overflow: hidden;
+            background-color: #f0f0f0;
+            margin-bottom: 12px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
 
-        /* 캐릭터 썸네일 이미지 */
-        .character-thumb {
-            width: 160px;
-            border-radius: 8px;
-            flex-shrink: 0;
-            background-color: #e0e0e0; /* 이미지 없을 때 기본 색상 */
+        .img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
         }
 
-        /* 캐릭터 정보 및 리스트 영역 */
-        .character-info {
-            flex-grow: 1;
+        .work-card:hover .img-wrapper img {
+            transform: scale(1.04);
         }
 
-        .character-info h2 {
-            margin-top: 0;
-            margin-bottom: 8px;
-            font-size: 20px;
+        .work-title {
+            font-size: 17px;
+            font-weight: bold;
+            margin: 0 0 10px 0;
+            line-height: 1.4;
         }
 
-        .character-info p {
-            color: #787774;
-            font-size: 14px;
-            margin-bottom: 16px;
+        .link-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
         }
 
-        /* 썸네일, B컷 링크 리스트 스타일 */
-        .link-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .link-list li {
-            margin-bottom: 8px;
-        }
-
-        .link-list a {
+        .link-group a {
             text-decoration: none;
-            color: #37352f;
-            background-color: #ffffff;
+            color: #444;
+            background-color: #f7f6f3;
             padding: 8px 12px;
             border-radius: 6px;
-            display: inline-block;
-            border: 1px solid #e9e9e7;
-            font-size: 14px;
-            transition: background 0.2s;
-            width: 130px;
-            box-sizing: border-box;
+            font-size: 13px;
+            transition: 0.2s;
+            border: 1px solid transparent;
         }
 
-        .link-list a:hover {
+        .link-group a:hover {
             background-color: #ebebea;
+            color: #000;
         }
 
         .link-desc {
-        margin: 4px 0 0;
-        font-size: 12px;
-        color: #999;
+            margin: 0 0 0 4px;
+            font-size: 11px;
+            color: #999;
         }
 
-        /* 푸터(바닥글) 스타일 */
+        /* 푸터 */
         footer {
             text-align: center;
-            padding: 20px;
+            padding: 30px 20px;
             color: #999;
             font-size: 12px;
             border-top: 1px solid #ededed;
+            margin-top: 40px;
         }
 
-        /* 모바일 반응형 (화면이 600px보다 작아지면 실행) */
         @media (max-width: 600px) {
-            .character-card {
-                flex-direction: column; /* 세로로 배치 */
-                align-items: center;
-                text-align: center;
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr); /* 모바일: 한 줄에 2개 */
+                gap: 24px 12px; 
             }
-            .character-thumb {
-                width: 100%;
-                max-width: 200px;
-                height: auto;
+            .work-title {
+                font-size: 15px; 
+            }
+            .link-group a {
+                font-size: 12px;
+                padding: 6px 10px;
             }
         }
     </style>
@@ -157,51 +146,44 @@
             </h1>
         </header>
 
-        <main>
+        <main class="gallery-grid">
             
-            <!-- 캐릭터 1 시작 -->
-            <div class="character-card">
-                <img src="https://12321.uk/wrtn/3%EC%9D%BC_%EA%B9%80%EC%A0%95%EC%B2%A0L.png" alt="너와 함께 영원한 3일을" class="character-thumb">
-                
-                <div class="character-info">
-                    <h2>💫 너와함께 영원한 3일을 (벨)</h2>
-                    
-                    <ul class="link-list">
-                        <li><a href="/bell/thumb.html">🖼 썸네일 모음</a></li>
-                        <li><a href="/bell/etc.html">👾 260408</a></li>
-                    </ul>
+            <div class="work-card">
+                <div class="img-wrapper">
+                    <img src="https://12321.uk/wrtn/3%EC%9D%BC_%EA%B9%80%EC%A0%95%EC%B2%A0L.png" alt="벨">
+                </div>
+                <h2 class="work-title">💫 벨</h2>
+                <div class="link-group">
+                    <a href="/bell/thumb.html">🖼 썸네일 모음</a>
+                    <a href="/bell/etc.html">👾 260408</a>
                 </div>
             </div>
 
-            
-            <div class="character-card">
-                <img src="https://12321.uk/wrtn/berry/3%EC%9D%BC.png" alt="너와 함께 영원한 3일을" class="character-thumb">
-                
-                <div class="character-info">
-                    <h2>💫 너와함께 영원한 3일을 (베리)</h2>
-                    
-                    <ul class="link-list">
-                        <li><a href="/berry/thumb.html">🖼 썸네일 모음</a></li>
-                        <li><a href="/berry/etc.html">👾 b컷(1)</a></li>
-                        <li><a href="/berry/etc2.html">👾 b컷(2)</a>
-                        <p class="link-desc">ㄴ50장있어요 데이터주의!</p>
-                        </li>                        
-                    </ul>
+            <div class="work-card">
+                <div class="img-wrapper">
+                    <img src="https://12321.uk/wrtn/berry/3%EC%9D%BC.png" alt="베리">
+                </div>
+                <h2 class="work-title">💫 베리</h2>
+                <div class="link-group">
+                    <a href="/berry/thumb.html">🖼 썸네일 모음</a>
+                    <a href="/berry/etc.html">👾 b컷(1)</a>
+                    <a href="/berry/etc2.html">👾 b컷(2)</a>
+                    <p class="link-desc">ㄴ50장있어요 데이터주의!</p>
                 </div>
             </div>
 
-            <div class="character-card">
-                <img src="https://12321.uk/wrtn/%EA%B7%B8%EB%9F%BC.webp" alt="캐릭터2 썸네일" class="character-thumb">
-                <div class="character-info">
-                    <h2>🌃 그럼에도, 여전히</h2>
-                    <ul class="link-list">
-                        <li><a href="/still/hyun.html">👨‍⚖️ 김현재</a></li>
-                        <li><a href="/still/yu.html">💸 성유성</a></li>
-                        <li><a href="/still/hae.html">🚬 해일</a></li>
-                    </ul>
+            <div class="work-card">
+                <div class="img-wrapper">
+                    <img src="https://12321.uk/wrtn/%EA%B7%B8%EB%9F%BC.webp" alt="현재">
+                </div>
+                <h2 class="work-title">🌃 그럼에도, 여전히</h2>
+                <div class="link-group">
+                    <a href="/still/hyun.html">👨‍⚖️ 김현재</a>
+                    <a href="/still/yu.html">💸 성유성</a>
+                    <a href="/still/hae.html">🚬 해일</a>
                 </div>
             </div>
-            <!-- 캐릭터 2 끝 -->
+            
 
         </main>
     </div>
