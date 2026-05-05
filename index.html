@@ -23,7 +23,7 @@
 
         /* 헤더 */
         header {
-            margin-bottom: 40px;
+            margin-bottom: 20px;
             border-bottom: 1px solid #ededed;
             padding-bottom: 20px;
         }
@@ -117,6 +117,13 @@
         }
 
        /* 💌 커스텀 폼 디자인 */
+        .feedback-box{
+        background-color: #f7f6f3;
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 12px;
+        }
+        
         .custom-form {
             display: flex;
             flex-direction: column;
@@ -126,7 +133,7 @@
 
         .custom-input {
             width: 100%;
-            height: 80px; /* 입력칸 높이 */
+            min-height: 80px; /* 입력칸 높이 */
             padding: 12px;
             border-radius: 8px;
             border: 1px solid #d9d9d9;
@@ -184,29 +191,33 @@
         </header>
 
         <section class="feedback-box">
-            <h2>💌 테스트</h2>
             <form action="https://docs.google.com/forms/d/e/1FAIpQLSeGuOHKd7cZKd2WMSujmQr5PsaNC8X1p84BdkCD4nGuP0pvug/formResponse" method="POST" target="hidden_iframe" class="custom-form">
-                
-                <!-- 입력칸 (이름이 중요합니다!) -->
                 <textarea name="entry.1854620972" class="custom-input" placeholder="여기에 메시지를 적어주세요..." required></textarea>
-                
-                <!-- 전송 버튼 -->
                 <button type="submit" class="custom-submit-btn" onclick="showThanksMessage()">보내기</button>
             </form>
 
-            <!-- 제출 후 구글 화면으로 넘어가는 걸 막아주는 투명 방패 -->
+            <!-- 제출 후 구글 화면으로 넘기는거 막아주기 -->
             <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
         </section>
 
-        <!-- 전송 완료 알림을 띄우는 짧은 스크립트 -->
+        <!-- 구글폼 -->
         <script>
+            // 높이조절 기능
+            const textarea = document.querySelector('.custom-input');
+            textarea.addEventListener('input', () => {
+                textarea.style.height = 'auto'; 
+                textarea.style.height = textarea.scrollHeight + 'px';
+            });
+
+            // 메시지 전송 완료 알림
             function showThanksMessage() {
-                // 입력칸이 비어있지 않을 때만 알림 띄우기
                 const input = document.querySelector('.custom-input').value;
                 if(input.trim() !== '') {
                     alert("메시지가 성공적으로 전송되었습니다! 감사합니다 💌");
-                    // 0.5초 뒤에 입력칸 비워주기
-                    setTimeout(() => { document.querySelector('.custom-input').value = ''; }, 500);
+                    setTimeout(() => { 
+                        textarea.value = ''; // 입력칸 비우기
+                        textarea.style.height = 'auto'; // 높이 되돌리기
+                    }, 500);
                 }
             }
         </script>
