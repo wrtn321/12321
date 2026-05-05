@@ -116,6 +116,42 @@
             margin-top: 40px;
         }
 
+        /* 구글폼 */
+        .feedback-box {
+            background-color: #f7f6f3;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .feedback-box h2 {
+            font-size: 18px;
+            margin: 0 0 8px 0;
+            color: #37352f;
+        }
+
+        .feedback-box p {
+            font-size: 14px;
+            color: #787774;
+            margin: 0 0 16px 0;
+        }
+
+        .iframe-container {
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #ffffff;
+            border: 1px solid #ededed;
+        }
+
+        .iframe-container iframe {
+            width: 100%;
+            height: 350px;
+            border: none;
+            display: block;
+        }
+
         @media (max-width: 600px) {
             .gallery-grid {
                 grid-template-columns: repeat(2, 1fr); /* 모바일: 한 줄에 2개 */
@@ -140,6 +176,14 @@
                 일이
             </h1>
         </header>
+
+        <section class="feedback-box">
+            <h2>💌 테스트</h2>
+            <div class="iframe-container">
+                <!-- 아까 구글폼에서 복사한 <iframe...> 코드를 바로 이 줄에 덮어씌우세요! -->
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeGuOHKd7cZKd2WMSujmQr5PsaNC8X1p84BdkCD4nGuP0pvug/viewform?embedded=true" width="640" height="350" frameborder="0" marginheight="0" marginwidth="0">로드 중…</iframe>
+            </div>
+        </section>
 
         <main class="gallery-grid">
             
