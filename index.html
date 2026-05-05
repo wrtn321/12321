@@ -23,7 +23,7 @@
 
         /* 헤더 */
         header {
-            margin-bottom: 20px;
+            margin-bottom: 40px;
             border-bottom: 1px solid #ededed;
             padding-bottom: 20px;
         }
@@ -113,15 +113,26 @@
             color: #999;
             font-size: 12px;
             border-top: 1px solid #ededed;
-            margin-top: 40px;
         }
 
        /* 💌 커스텀 폼 디자인 */
-        .feedback-box{
-        background-color: #f7f6f3;
-        padding: 10px;
-        margin-bottom: 15px;
-        border-radius: 12px;
+        .feedback-box {
+            background-color: #f7f6f3;
+            padding: 24px;
+            margin-top: 60px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .feedback-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0 0 8px 0; /* 위쪽 여백은 없고, 아래쪽에만 8px */
+        }
+        
+        .feedback-description {
+            font-size: 13px;
+            color: #787774; /* 다른 설명글과 색상 통일 */
+            margin: 0 0 16px 0; /* 아래 입력창과 간격을 둠 */
         }
         
         .custom-form {
@@ -143,6 +154,7 @@
             box-sizing: border-box; /* 삐져나감 방지 */
             outline: none;
             transition: border 0.2s;
+            overflow-y: hidden;
         }
 
         .custom-input:focus {
@@ -163,6 +175,10 @@
 
         .custom-submit-btn:hover {
             background-color: #55534e;
+        }
+
+        .hidden {
+            display: none;
         }
 
         @media (max-width: 600px) {
@@ -190,37 +206,7 @@
             </h1>
         </header>
 
-        <section class="feedback-box">
-            <form action="https://docs.google.com/forms/d/e/1FAIpQLSeGuOHKd7cZKd2WMSujmQr5PsaNC8X1p84BdkCD4nGuP0pvug/formResponse" method="POST" target="hidden_iframe" class="custom-form">
-                <textarea name="entry.1854620972" class="custom-input" placeholder="여기에 메시지를 적어주세요..." required></textarea>
-                <button type="submit" class="custom-submit-btn" onclick="showThanksMessage()">보내기</button>
-            </form>
-
-            <!-- 제출 후 구글 화면으로 넘기는거 막아주기 -->
-            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
-        </section>
-
-        <!-- 구글폼 -->
-        <script>
-            // 높이조절 기능
-            const textarea = document.querySelector('.custom-input');
-            textarea.addEventListener('input', () => {
-                textarea.style.height = 'auto'; 
-                textarea.style.height = textarea.scrollHeight + 'px';
-            });
-
-            // 메시지 전송 완료 알림
-            function showThanksMessage() {
-                const input = document.querySelector('.custom-input').value;
-                if(input.trim() !== '') {
-                    alert("메시지가 성공적으로 전송되었습니다! 감사합니다 💌");
-                    setTimeout(() => { 
-                        textarea.value = ''; // 입력칸 비우기
-                        textarea.style.height = 'auto'; // 높이 되돌리기
-                    }, 500);
-                }
-            }
-        </script>
+        
 
         <main class="gallery-grid">
             
@@ -262,6 +248,41 @@
             
 
         </main>
+	<section class="feedback-box">
+            
+            <h2 class="feedback-title">💌 익명 메시지 보내기</h2>
+            <p class="feedback-description">댓글로 적기 곤란했던 불편사항이 있으셨다면 알려주세요. 익명으로 전달됩니다!</p>
+            
+            <form action="https://docs.google.com/forms/d/e/1FAIpQLSeGuOHKd7cZKd2WMSujmQr5PsaNC8X1p84BdkCD4nGuP0pvug/formResponse" method="POST" target="hidden_iframe" class="custom-form">
+                <textarea name="entry.1854620972" class="custom-input" placeholder="(예시: ㅇㅇ캐챗의 ㅇㅇ이미지 왜 이렇게 어려보임? 바꿔주셈, ㅇㅇ부분 찐빠 너무 심하다 등등)" required></textarea>
+                <button type="submit" class="custom-submit-btn" onclick="showThanksMessage()">보내기</button>
+            </form>
+
+            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+        </section>
+
+        <!-- 구글폼 -->
+        <script>
+            // 높이조절 기능
+            const textarea = document.querySelector('.custom-input');
+            textarea.addEventListener('input', () => {
+                textarea.style.height = 'auto'; 
+                textarea.style.height = textarea.scrollHeight + 'px';
+            });
+
+            // 메시지 전송 완료 알림
+            function showThanksMessage() {
+                const input = document.querySelector('.custom-input').value;
+                if(input.trim() !== '') {
+                    alert("메시지가 성공적으로 전송되었습니다! 감사합니다 💌");
+                    setTimeout(() => { 
+                        textarea.value = ''; // 입력칸 비우기
+                        textarea.style.height = 'auto'; // 높이 되돌리기
+                    }, 500);
+                }
+            }
+        </script>
+
     </div>
 
     <footer>
